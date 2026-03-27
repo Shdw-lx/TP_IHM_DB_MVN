@@ -33,4 +33,26 @@ public class UserDAO {
 
         return null;
     }
+
+    public boolean createUser(user user) {
+
+        String sql = "INSERT INTO user (userId, usernName, Password, gender) VALUES (?,?,?,?)";
+
+        try (Connection conn = db_conf.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, user.getUserId());
+            stmt.setString(2, user.getUsernName());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getGender());
+
+            int rowsInserted = stmt.executeUpdate();
+
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return  false;
+        }
+    }
 }

@@ -9,12 +9,14 @@ public class userForm extends JFrame {
     private JTextField Enteredusername;
     private JPasswordField Enteredpassword;
     private JButton se_connecter;
+    private JButton register;
 
     public userForm() {
 
         Enteredusername = new JTextField(20);
         Enteredpassword = new JPasswordField(20);
         se_connecter = new JButton("Se connecter");
+        register = new JButton("S'inscrire");
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -32,6 +34,7 @@ public class userForm extends JFrame {
 
         JPanel row3 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         row3.add(se_connecter);
+        row3.add(register);
         panel.add(row3);
 
         setContentPane(panel);
@@ -47,7 +50,17 @@ public class userForm extends JFrame {
                 if (user != null) {
 
                     JOptionPane.showMessageDialog(null, "Welcome " + user.getUsernName() + "\n Gender : " + user.getGender() );
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Entrer des informations valides !");
                 }
+            }
+        });
+
+        register.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new RegisterForm();
             }
         });
 

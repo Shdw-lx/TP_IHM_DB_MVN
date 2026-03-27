@@ -1,13 +1,18 @@
 package org.example;
 
-public class user {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class UserDTO {
 
     private int userId;
     private String usernName;
     private String Password;
     private String gender;
 
-    public user () {
+    public UserDTO () {
 
         this.userId = 0;
         this.usernName = "" ;
@@ -15,7 +20,7 @@ public class user {
         this.gender = "";
     }
 
-    public user(int userId, String usernName, String Password, String gender) {
+    public UserDTO(int userId, String usernName, String Password, String gender) {
 
         this.userId = userId;
         this.usernName = usernName;
@@ -43,7 +48,7 @@ public class user {
     public void setPassword() {
         this.Password = Password;
     }
-    public void setGender() {
+    public void setGender(String gender) {
         this.gender = gender;
     }
     public String getGender() {
